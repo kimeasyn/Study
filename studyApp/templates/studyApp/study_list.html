@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="" method="get">
+            <input type="text" name="q" value="{{ q }}"/>
+            <input type="submit" value="검색"/>
+    </form>
+{% for study in study_list %}
+    <li>
+        {{ study.id }}
+        {{ study.title }}
+        <small>{{ study.writer }}</small>
+        <small>{{ study.created_at }}</small>
+    </li>
+{% endfor %}
+</body>
+</html>
