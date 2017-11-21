@@ -19,12 +19,14 @@ class Study(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     status = models.CharField(max_length=1, choices=STATUS_CHOICE)
+    tag_set = models.ManyToManyField('Tag')
 
     class Meta:
         ordering = ['-id']
 
     def __str__(self):
         return self.title
+
 
 class Comment(models.Model):
     study = models.ForeignKey(Study)
@@ -33,5 +35,11 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
 
 

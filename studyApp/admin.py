@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Study, Comment
+from .models import Study, Comment, Tag
 # Register your models here.
 
 
@@ -20,8 +20,13 @@ class StudyAdmin(admin.ModelAdmin):
     make_close.short_description = '스터디글 close 상태로 바꾸기'
 #admin.site.register(Study, StudyAdmin)
 
+
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     pass
 
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ['name']
 
