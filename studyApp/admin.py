@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Study
+from .models import Study, Comment
 # Register your models here.
 
 
@@ -19,5 +19,9 @@ class StudyAdmin(admin.ModelAdmin):
     make_open.short_description = '스터디글 open 상태로 바꾸기'
     make_close.short_description = '스터디글 close 상태로 바꾸기'
 #admin.site.register(Study, StudyAdmin)
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    pass
 
 

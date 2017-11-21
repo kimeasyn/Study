@@ -26,5 +26,12 @@ class Study(models.Model):
     def __str__(self):
         return self.title
 
+class Comment(models.Model):
+    study = models.ForeignKey(Study)
+    writer = models.CharField(max_length=50)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
 
 
