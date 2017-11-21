@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ study.title }}</title>
+</head>
+<body>
+    <h1>{{ study.title }}</h1>
+    {{ study.content|linebreaks }}
+
+    <hr/>
+
+    <ul>
+    {% for comment in study.comment_set.all %}
+        <li>
+            {{ comment.message }}
+            <small>by{{ comment.writer }}</small>
+            <small>{{ comment.created_at }}</small>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
