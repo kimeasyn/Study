@@ -19,7 +19,7 @@ class Study(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     status = models.CharField(max_length=1, choices=STATUS_CHOICE)
-    tag_set = models.ManyToManyField('Tag')
+    tag_set = models.ManyToManyField('Tag', blank=True)
 
     class Meta:
         ordering = ['-id']
