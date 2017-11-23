@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.conf import settings
 # Create your models here.
 
 
@@ -9,7 +9,8 @@ class Study(models.Model):
         ('o', 'Open'),
     )
     title = models.CharField(max_length=200, verbose_name='제목', help_text='제목을 입력하세요')
-    writer = models.CharField(max_length=100, verbose_name='글쓴이')
+    # writer = models.CharField(max_length=100, verbose_name='글쓴이')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
     book = models.CharField(max_length=50)
     tags = models.CharField(max_length=100, blank=True)
     location = models.CharField(max_length=50)

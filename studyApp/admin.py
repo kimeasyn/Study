@@ -5,7 +5,7 @@ from .models import Study, Comment, Tag
 
 @admin.register(Study)
 class StudyAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'writer', 'status', 'book', 'location', 'created_at']
+    list_display = ['id', 'title', 'user', 'status', 'book', 'location', 'created_at']
     actions = ['make_open',]
 
     def make_open(self, request, queryset):
