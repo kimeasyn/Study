@@ -10,7 +10,7 @@ class Study(models.Model):
     )
     title = models.CharField(max_length=200, verbose_name='제목', help_text='제목을 입력하세요')
     # writer = models.CharField(max_length=100, verbose_name='글쓴이')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='study_user_set')
     book = models.CharField(max_length=50)
     tags = models.CharField(max_length=100, blank=True)
     location = models.CharField(max_length=50)
