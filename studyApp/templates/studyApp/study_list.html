@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'studyApp/layout.html' %}
+{% block content %}
     <form action="" method="get">
             <input type="text" name="q" value="{{ q }}"/>
             <input type="submit" value="검색"/>
@@ -19,5 +14,4 @@
         <small>{{ study.created_at }}</small>
     </li>
 {% endfor %}
-</body>
-</html>
+{% endblock %}
