@@ -7,9 +7,12 @@
 {% for study in study_list %}
     <li>
         {{ study.id }}
-        <a href="/study/{{ study.id }}">
+        <a href="{% url "study_detail" study.id %}">
             {{ study.title }}
         </a>
+{#        <a href="/study/{{ study.id }}">#}
+{#            {{ study.title }}#}
+{#        </a>#}
         <small>{{ study.writer }}</small>
         <small>{{ study.created_at }}</small>
     </li>
