@@ -15,8 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.shortcuts import redirect
+
+
+# def root_redirect(request):
+#     return redirect('study:study_list')
+
 
 urlpatterns = [
+    # url(r'^$', root_redirect, name='root'),
+    url(r'^$', lambda r: redirect('study:study_list'), name='root'),
     url(r'^admin/', admin.site.urls),
     url(r'^study/', include('studyApp.urls', namespace='study')),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
