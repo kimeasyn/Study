@@ -1,20 +1,30 @@
 {% extends 'studyApp/layout.html' %}
 {% block content %}
     <form action="" method="get">
-            <input type="text" name="q" value="{{ q }}"/>
-            <input type="submit" value="검색"/>
+        <input type="text" name="q" value="{{ q }}"/>
+        <input type="submit" value="검색"/>
     </form>
-{% for study in study_list %}
-    <li>
-        {{ study.id }}
-        <a href="{% url "study:study_detail" study.id %}">
-            {{ study.title }}
-        </a>
-{#        <a href="/study/{{ study.id }}">#}
-{#            {{ study.title }}#}
-{#        </a>#}
-        <small>{{ study.writer }}</small>
-        <small>{{ study.created_at }}</small>
-    </li>
-{% endfor %}
+    <table class="table table-hover table-bordered">
+    <tr>
+        <th>id</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+    </tr>
+        {% for study in study_list %}
+            <tr>
+                <td>{{ study.id }}</td>
+                <td>
+                    <a href="{% url "study:study_detail" study.id %}">
+                        {{ study.title }}
+                    </a>
+                </td>
+                {#        <a href="/study/{{ study.id }}">#}
+                {#            {{ study.title }}#}
+                {#        </a>#}
+                <td><small>{{ study.user }}</small></td>
+                <td><small>{{ study.created_at }}</small></td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
