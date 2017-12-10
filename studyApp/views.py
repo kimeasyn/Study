@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from .models import Study
-
+from .forms import StudyForm
 # Create your views here.
 
 
@@ -27,4 +27,15 @@ def study_detail(request, id):
 
     return render(request, 'studyApp/study_detail.html', {
         'study': study,
+    })
+
+
+def study_new(request):
+    if request.method == 'POST':
+        form = StudyForm(request.POST, request.FILES)
+    else:
+        form = StudyForm()
+
+    return render(request, 'studyApp/study_form.html', {
+        'form': form,
     })
