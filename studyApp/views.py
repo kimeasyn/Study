@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from .models import Study
 from .forms import StudyForm
+from django.shortcuts import redirect
 # Create your views here.
 
 
@@ -33,6 +34,14 @@ def study_detail(request, id):
 def study_new(request):
     if request.method == 'POST':
         form = StudyForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            study = Study()
+            study.title = form.cleaned_data['title']
+            study.content = form.cleaned_data['content']
+            study.book = form.cleaned_data['book']
+            study.save()
+            return redirect('studyApp:study_list')
     else:
         form = StudyForm()
 
